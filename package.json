@@ -1,6 +1,6 @@
 {
   "name": "portfolio-sharad",
-  "homepage": "portfolio-sharad/",
+  "homepage": ".",
   "version": "1.5.0",
   "private": true,
   "dependencies": {
