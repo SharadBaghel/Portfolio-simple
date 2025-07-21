@@ -1,0 +1,65 @@
+/********************** Footer **********************/
+
+.footer {
+    background: #1b0483; /* Black background */
+    border-top: 3px solid #00ff88; /* Green border */
+    box-shadow: 0 -2px 10px rgba(8, 233, 214, 0.623);
+    padding: 2rem 8%;
+    color: #0be68a;
+}
+
+.site-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.site-footer .copyright {
+    font-size: 1.4rem;
+    padding: 2rem 0;
+    color: #a0f0c0;
+}
+
+.redes-sociales {
+    padding: 2rem 0;
+}
+
+.redes-sociales a {
+    font-size: 3.8rem;
+    padding-left: 2rem;
+    color: #00ff88;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.redes-sociales a:hover {
+    color: #ffffff;
+    transform: scale(1.2);
+}
+
+.titulo .redes-sociales a {
+    padding: 2rem;
+    color: #00ff88;
+}
+
+/* Responsive */
+@media (max-width: 570px) {
+    .footer {
+        padding: 1.5rem 5%;
+        text-align: center;
+    }
+
+    .site-footer {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .site-footer .copyright p {
+        font-size: 1.2rem;
+    }
+
+    .site-footer .redes-sociales a {
+        font-size: 2.2rem;
+        padding-left: 1.5rem;
+    }
+}
