@@ -51,12 +51,7 @@ const Header = () => {
                         defaultMessage='About me'
                     />
                 </Link>
-                <Link to="servicios" spy={true} offset={-150} href="#servicios">
-                    <FormattedMessage
-                        id='services'
-                        defaultMessage='Services'
-                    />
-                </Link>
+                
                 <Link to="proyectos" spy={true} offset={-150} href="#proyectos">
                     <FormattedMessage
                         id='projects'

@@ -5,8 +5,63 @@ import cv from '../../cv/cv.pdf';
 import { ButtomGet } from '../ButtomGet/ButtomGet';
 import { FormattedMessage } from 'react-intl';
 
+const getSkillLabel = (level) => {
+  if (level >= 90) return 'Expert';
+  if (level >= 75) return 'Advanced';
+  if (level >= 60) return 'Intermediate';
+  if (level >= 40) return 'Moderate';
+  return 'Beginner';
+};
+
 const About = () => (
   <section className="sobre-mi" id="sobre-mi">
+    <style>{`
+      .skill-item {
+        margin-bottom: 1rem;
+      }
+
+      .progress-container {
+        position: relative;
+        height: 10px;
+        background-color: #eee;
+        border-radius: 10px;
+        overflow: hidden;
+        margin-top: 5px;
+        margin-bottom: 5px;
+      }
+
+      .progress-container progress {
+        width: 100%;
+        height: 10px;
+        appearance: none;
+      }
+
+      .progress-container progress::-webkit-progress-bar {
+        background-color: #eee;
+        border-radius: 10px;
+      }
+
+      .progress-container progress::-webkit-progress-value {
+        background-color: #e06737ff;
+        border-radius: 10px;
+      }
+
+      .percent-label {
+  font-size: 12px;
+  font-weight: bold;
+  color: #987aacff; /* Golden Yellow - visible on both dark and light */
+}
+
+.level-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #FFD700; /* Golden Yellow */
+  margin-top: 2px;
+  display: inline-block;
+}
+
+    `}</style>
+
     <h2 className="heading">
       <FormattedMessage id='about' defaultMessage='About me' />
     </h2>
@@ -29,33 +84,10 @@ const About = () => (
           />
         </p>
         <ul>
-          <li>
-            <p>
-              <span>
-                <FormattedMessage id='years' defaultMessage='Age:' />
-              </span>
-               21
-            </p>
-          </li>
-          <li>
-            <p>
-              <span>Hobbies: </span>
-              Movies, Cricket and Programming
-            </p>
-          </li>
-          <li>
-            <p>
-              <span>Email:</span> sharadbaghel827@gmail.com
-            </p>
-          </li>
-          <li>
-            <p>
-              <span>
-                <FormattedMessage id='from' defaultMessage='From:' />
-              </span>
-              Maharashtra, India
-            </p>
-          </li>
+          <li><p><span><FormattedMessage id='years' defaultMessage='Age:' /></span> 21</p></li>
+          <li><p><span>Email:</span> sharadbaghel827@gmail.com</p></li>
+          <li><p><span>Mobile No:</span> 8077529654</p></li>
+          <li><p><span><FormattedMessage id='from' defaultMessage='From:' /></span> Maharashtra, India</p></li>
         </ul>
         <div className="mas-info">
           <a
@@ -74,87 +106,70 @@ const About = () => (
           </div>
         </div>
       </div>
+
       <div className="columns col-skill" data-aos="fade-left" data-aos-delay="650">
         <h3>Skills</h3>
+
         <h4>Front-End</h4>
         <div className="skill">
-          <div>
-            <img alt="HTML" className="icons-skils" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original.svg" />
-            <h5>HTML</h5>
-          </div>
-          <div>
-            <img alt="CSS" className="icons-skils" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original.svg" />
-            <h5>CSS</h5>
-          </div>
-          <div>
-            <img alt="Js" className="icons-skils" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-plain.svg" />
-            <h5>JavaScript</h5>
-          </div>
-          <div>
-            <img alt="Sass" className="icons-skils" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sass/sass-original.svg" />
-            <h5>Sass</h5>
-          </div>
-          <div>
-            <img alt="Bootstrap" className="icons-skils" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg" />
-            <h5>Bootstrap</h5>
-          </div>
-          <div>
-            <img alt="jQuery" className="icons-skils" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jquery/jquery-plain-wordmark.svg" />
-            <h5>jQuery</h5>
-          </div>
-          <div>
-            <img alt="React" className="icons-skils" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" />
-            <h5>React</h5>
-          </div>
-          <div>
-            <img alt="Typescript" className="icons-skils" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" />
-            <h5>Typescript</h5>
-          </div>
+          {[
+            { name: 'HTML', level: 95, icon: 'html5/html5-original.svg' },
+            { name: 'CSS', level: 90, icon: 'css3/css3-original.svg' },
+            { name: 'JavaScript', level: 85, icon: 'javascript/javascript-plain.svg' },
+            { name: 'Sass', level: 75, icon: 'sass/sass-original.svg' },
+            { name: 'Bootstrap', level: 80, icon: 'bootstrap/bootstrap-original.svg' },
+            { name: 'jQuery', level: 70, icon: 'jquery/jquery-plain-wordmark.svg' },
+            { name: 'React', level: 85, icon: 'react/react-original.svg' },
+            { name: 'Typescript', level: 60, icon: 'typescript/typescript-original.svg' }
+          ].map(({ name, level, icon }) => (
+            <div key={name} className="skill-item">
+              <img alt={name} className="icons-skils" src={`https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${icon}`} />
+              <h5>{name}</h5>
+              <div className="progress-container">
+                <progress value={level} max="100"></progress>
+              </div>
+              <span className="percent-label">{level}%</span> <span className="level-label">({getSkillLabel(level)})</span>
+            </div>
+          ))}
         </div>
+
         <h4>Back-End</h4>
         <div className="skill">
-          <div>
-            <img alt="Nodejs" className="icons-skils" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" />
-            <h5>NodeJs</h5>
-          </div>
-          <div>
-            <img alt="express" className="icons-skils" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg" />
-            <h5>Express</h5>
-          </div>
-          <div>
-            <img alt="php" className="icons-skils" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" />
-            <h5>PHP</h5>
-          </div>
-          <div>
-            <img alt="laravel" className="icons-skils" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/laravel/laravel-original.svg" />
-            <h5>Laravel</h5>
-          </div>
-          <div>
-            <img alt="mysql" className="icons-skils" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original-wordmark.svg" />
-            <h5>MySQL</h5>
-          </div>
-          <div>
-            <img alt="postgresql" className="icons-skils" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original-wordmark.svg" />
-            <h5>PostgreSQL</h5>
-          </div>
-          <div>
-            <img alt="mongodb" className="icons-skils" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-plain-wordmark.svg" />
-            <h5>MongoDB</h5>
-          </div>
+          {[
+            { name: 'NodeJs', level: 80, icon: 'nodejs/nodejs-original.svg' },
+            { name: 'Express', level: 75, icon: 'express/express-original.svg' },
+            { name: 'PHP', level: 70, icon: 'php/php-original.svg' },
+            { name: 'Laravel', level: 65, icon: 'laravel/laravel-original.svg' },
+            { name: 'MySQL', level: 80, icon: 'mysql/mysql-original-wordmark.svg' },
+            { name: 'PostgreSQL', level: 70, icon: 'postgresql/postgresql-original-wordmark.svg' },
+            { name: 'MongoDB', level: 75, icon: 'mongodb/mongodb-plain-wordmark.svg' }
+          ].map(({ name, level, icon }) => (
+            <div key={name} className="skill-item">
+              <img alt={name} className="icons-skils" src={`https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${icon}`} />
+              <h5>{name}</h5>
+              <div className="progress-container">
+                <progress value={level} max="100"></progress>
+              </div>
+              <span className="percent-label">{level}%</span> <span className="level-label">({getSkillLabel(level)})</span>
+            </div>
+          ))}
         </div>
-        <h4>
-          <FormattedMessage id='tools' defaultMessage='Tools' />
-        </h4>
+
+        <h4><FormattedMessage id='tools' defaultMessage='Tools' /></h4>
         <div className="skill">
-          <div>
-            <img alt="Visual Studio Code" className="icons-skils" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Visual_Studio_Code_1.18_icon.svg/1200px-Visual_Studio_Code_1.18_icon.svg.png" title="Visual Studio Code" />
-            <h5>VS Code</h5>
-          </div>
-          
-          <div>
-            <img alt="git" className="icons-skils" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" title="git" />
-            <h5>Git</h5>
-          </div>
+          {[
+            { name: 'VS Code', level: 90, icon: 'https://upload.wikimedia.org/wikipedia/commons/2/2d/Visual_Studio_Code_1.18_icon.svg' },
+            { name: 'Git', level: 85, icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg' }
+          ].map(({ name, level, icon }) => (
+            <div key={name} className="skill-item">
+              <img alt={name} className="icons-skils" src={icon} />
+              <h5>{name}</h5>
+              <div className="progress-container">
+                <progress value={level} max="100"></progress>
+              </div>
+              <span className="percent-label">{level}%</span> <span className="level-label">({getSkillLabel(level)})</span>
+            </div>
+          ))}
         </div>
       </div>
     </div>

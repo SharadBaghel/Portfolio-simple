@@ -49,12 +49,7 @@ const HeaderPage = () => {
                         defaultMessage='About me'
                     />
                 </NavLink>
-                <NavLink to="/service" offset={-150} duration={500}>
-                    <FormattedMessage
-                        id='services'
-                        defaultMessage='Services'
-                    />
-                </NavLink>
+                
                 
             </nav>
             <div className="switch" id="switch">

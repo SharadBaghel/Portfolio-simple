@@ -134,3 +134,40 @@
         width: 60px !important;
     }
 }
+.titulo {
+  display: flex;           /* enable flex layout */
+  align-items: center;     /* vertically center items */
+  gap: 20px;               /* space between text and image */
+  flex-wrap: wrap;         /* wrap on small screens */
+}
+
+.text-content {
+  flex: 1;                 /* take up remaining width */
+}
+
+.profile-photo {
+  width: 280px;
+  height: 280px;
+  border-radius: 20px;     /* or your preferred shape */
+  object-fit: cover;
+  border: 3px solid #fff;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  margin-left: auto;       /* push image to the right */
+  flex-shrink: 0;          /* prevent image from shrinking */
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .titulo {
+    flex-direction: column;
+    align-items: center;
+  }
+  .profile-photo {
+    margin-left: 0;
+    margin-bottom: 20px;
+  }
+}
+
+
+
+
