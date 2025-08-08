@@ -1,4 +1,5 @@
 🎨 Portfolio-simple
+
 A clean and responsive personal portfolio template to showcase your skills, projects, and experience with simplicity and elegance. ✨
 
 🚀 Features
@@ -17,7 +18,6 @@ A clean and responsive personal portfolio template to showcase your skills, proj
 <img width="1346" height="647" alt="image" src="https://github.com/user-attachments/assets/e13b51d1-a764-4838-8c88-ab7f746ca307" />
 
 
-
 🛠️ Getting Started
 📋 Prerequisites
 🌐 A modern web browser (Chrome, Firefox, Safari, Edge)
@@ -29,9 +29,11 @@ Clone the repository to your local machine:
 
 bash
 git clone https://github.com/SharadBaghel/Portfolio-simple.git
+
 Navigate into the project directory:
 
 🛠️ Steps to Run Your React Portfolio
+
 Open Terminal 🖥️
 Navigate to your project folder:
 
@@ -47,6 +49,7 @@ Start the development server 🔥
 Launch your React app with:
 
 npm start
+
 View in browser 🌐
 After the server starts, it will usually open automatically. If not, go to:
 
